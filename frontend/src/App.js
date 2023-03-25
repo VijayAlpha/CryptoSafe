@@ -6,11 +6,12 @@ import UserDashboard from './components/UserDashboard';
 export default function App() {
   const [ethAddress, setEthAddress] = useState("");
   const [cryptoSafeContract, setCryptoSafeContract] = useState("");
+  const [userSigner, setUserSigner] = useState("");
   return (
     <HashRouter>
       <Routes>
-        <Route exact path='/' element={<Home setEthAddress={setEthAddress} setCryptoSafeContract={setCryptoSafeContract} />} />
-        <Route exact path='/dashboard' element={<UserDashboard ethAddress={ethAddress} cryptoSafeContract={cryptoSafeContract} />} />
+        <Route exact path='/' element={<Home setEthAddress={setEthAddress} setCryptoSafeContract={setCryptoSafeContract} setUserSigner={setUserSigner} />} />
+        <Route exact path='/dashboard' element={<UserDashboard ethAddress={ethAddress} cryptoSafeContract={cryptoSafeContract} userSigner={userSigner} />} />
       </Routes>
     </HashRouter>
   )
