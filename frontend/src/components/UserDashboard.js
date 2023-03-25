@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Box, CssBaseline, Toolbar } from '@mui/material';
-import Navbar from '../common/layout/Navbar';
 import Sidebar from '../common/layout/Sidebar';
 import UserWallet from '../safe/UserWallet';
 import Safe from '../safe/Safe';
@@ -29,14 +28,13 @@ export default function UserDashboard({ ethAddress, cryptoSafeContract, userSign
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <Navbar />
             <Sidebar setCurrentSection={setCurrentSection} currentSection={currentSection} safeAddress={safeAddress} ethAddress={ethAddress} />
             <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}>
                 <Toolbar />
                 {currentSection === "Wallet" && <UserWallet ethAddress={ethAddress} userSigner={userSigner} setUserAssets={setUserAssets} userAssets={userAssets} safeAddress={safeAddress} />}
                 {currentSection === "Safe" && <Safe cryptoSafeContract={cryptoSafeContract} safeAddress={safeAddress} userAssets={userAssets} />}
                 {currentSection === "Recover" && <Recover cryptoSafeContract={cryptoSafeContract} />}
-                {currentSection === "Setting" && <Setting cryptoSafeContract={cryptoSafeContract} />}
+                {currentSection === "Backup" && <Setting cryptoSafeContract={cryptoSafeContract} />}
             </Box>
         </Box>
     )
