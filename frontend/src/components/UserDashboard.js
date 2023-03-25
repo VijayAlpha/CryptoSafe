@@ -4,7 +4,7 @@ import Sidebar from '../common/layout/Sidebar';
 import UserWallet from '../safe/UserWallet';
 import Safe from '../safe/Safe';
 import Recover from '../safe/Recover';
-import Setting from '../safe/Setting';
+import BackUp from '../safe/Backup';
 
 export default function UserDashboard({ ethAddress, cryptoSafeContract, userSigner }) {
     const [safeAddress, setSafeAddress] = useState("");
@@ -34,7 +34,7 @@ export default function UserDashboard({ ethAddress, cryptoSafeContract, userSign
                 {currentSection === "Wallet" && <UserWallet ethAddress={ethAddress} userSigner={userSigner} setUserAssets={setUserAssets} userAssets={userAssets} safeAddress={safeAddress} />}
                 {currentSection === "Safe" && <Safe cryptoSafeContract={cryptoSafeContract} safeAddress={safeAddress} userAssets={userAssets} />}
                 {currentSection === "Recover" && <Recover cryptoSafeContract={cryptoSafeContract} />}
-                {currentSection === "Backup" && <Setting cryptoSafeContract={cryptoSafeContract} />}
+                {currentSection === "Backup" && <BackUp cryptoSafeContract={cryptoSafeContract} />}
             </Box>
         </Box>
     )

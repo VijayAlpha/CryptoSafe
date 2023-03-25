@@ -1,6 +1,5 @@
 import React from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from "@mui/material"
-import { isConstructorDeclaration } from 'typescript';
 
 export default function WalletTable({ assets, handleClickOpen, type }) {
     console.log(assets)
