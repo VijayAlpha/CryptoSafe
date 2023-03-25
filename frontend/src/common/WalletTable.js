@@ -1,7 +1,9 @@
 import React from 'react';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from "@mui/material"
+import { isConstructorDeclaration } from 'typescript';
 
-export default function WalletTable() {
+export default function WalletTable({ assets, handleClickOpen, type }) {
+    console.log(assets)
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -14,12 +16,17 @@ export default function WalletTable() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    <TableRow>
-                        <TableCell>Dummy-1</TableCell>
-                        <TableCell>Dummy-2</TableCell>
-                        <TableCell>Dummy-3</TableCell>
-                        <TableCell>Dummy-4</TableCell>
-                    </TableRow>
+                    {assets.map((asset) => (
+                        <TableRow key={asset.address} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                            <TableCell component="th" scope="row">{asset.symbol}</TableCell>
+                            <TableCell>{asset.balance}</TableCell>
+                            <TableCell>{asset.address}</TableCell>
+                            <TableCell>
+                                <Button variant="outlined" onClick={() => handleClickOpen(asset.address)}>
+                                    {type}
+                                </Button></TableCell>
+                        </TableRow>
+                    ))}
                 </TableBody>
             </Table>
         </TableContainer>
