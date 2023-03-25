@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import Drawer from '@mui/material/Drawer';
@@ -15,6 +15,26 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import InventoryIcon from '@mui/icons-material/Inventory';
 
+
+const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
+    ({ theme, open }) => ({
+        flexGrow: 1,
+        padding: theme.spacing(3),
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        marginLeft: `-${drawerWidth}px`,
+        ...(open && {
+            transition: theme.transitions.create('margin', {
+                easing: theme.transitions.easing.easeOut,
+                duration: theme.transitions.duration.enteringScreen,
+            }),
+            marginLeft: 0,
+        }),
+    }),
+);
+
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
@@ -27,7 +47,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const drawerWidth = 240;
 export default function Sidebar({ setCurrentSection, currentSection, safeAddress, ethAddress }) {
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -84,6 +104,7 @@ export default function Sidebar({ setCurrentSection, currentSection, safeAddress
                         </ListItem>
                     ))}
                 </List>
+                <Divider />
                 <List>
                     <div>
                         <ListItem>
@@ -103,7 +124,7 @@ export default function Sidebar({ setCurrentSection, currentSection, safeAddress
                         </ListItem>
                     </div>
                 </List>
-                <Divider />
+                <Main open={open}> <DrawerHeader /></Main>
             </Drawer>
         </>
     )
