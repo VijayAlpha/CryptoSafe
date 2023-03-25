@@ -13,7 +13,7 @@ export default function Safe({ cryptoSafeContract, safeAddress, userAssets }) {
     const [amount, setAmount] = useState(0);
     const [feeToken, setFeeToken] = useState("");
     const [selectedToken, setSelectedToken] = useState("");
-    const [safeAssets, setSafeAssets] = useState("");
+    const [safeAssets, setSafeAssets] = useState([]);
 
     useEffect(() => {
         if (safeAddress) {
@@ -36,6 +36,7 @@ export default function Safe({ cryptoSafeContract, safeAddress, userAssets }) {
                     balance: balance
                 })
             }
+            console.log(assets)
             setSafeAssets(assets);
         } catch (err) {
             console.log(err);
@@ -46,7 +47,7 @@ export default function Safe({ cryptoSafeContract, safeAddress, userAssets }) {
         const txHandle = await cryptoSafeContract.createRecoverableSafe({
             customData: {
                 // Passing the token to pay fee with
-                feeToken: "0x3e7676937A7E96CFB7616f255b9AD9FF47363D4b",
+                feeToken: "0x3e7676937A7E96CFB7616f255b9AD9FF47363D4b", //DAI
             },
         })
         await txHandle.wait();
