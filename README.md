@@ -25,7 +25,10 @@ Users can pay fees with any of the asset present in there wallet to create a saf
 
 ## Technologies used
 
-CryptoSafe is currently available on Layer-2 zkSync Era Testnet.
+CryptoSafe is currently available on Layer-2 Polygon zkEVM & zkSync Era Testnet.
+
+- Polygon zkEVM:
+  Polygon zkEVM Beta harnesses the power of ZK proofs to reduce transaction cost and massively increase throughput, all while inheriting the security of Ethereum L1.
 
 - zkSync Era:
   zkSync Era is a Layer-2 protocol that scales Ethereum with cutting-edge ZK tech. Our mission is not only to merely increase Ethereum's throughput, but to fully preserve its foundational values – freedom, self-sovereignty, decentralization – at scale.
@@ -44,6 +47,14 @@ CryptoSafe is currently available on Layer-2 zkSync Era Testnet.
 2. ``
 
 ### Example CryptoSafe (try these out!)
+
+Connect to the appropriate network via metamask and visit the following links.
+
+CryptoSafe Contract(Polygon zkEVM): https://explorer.public.zkevm-test.net/address/0xDbdf4B0674b98A94010152F804D663a0D4213529
+
+CryptoSafe Contract(zkSync Era): https://zksync2-testnet.zkscan.io/address/0x845835274d85d210e3377f41A4305945aD8de61F/transactions
+
+Safe created using (zkSync Era): https://zksync2-testnet.zkscan.io/address/0x5c72600538bcC5CC4099EA07F0346A2014359135/transactions
 
 ### Screenshots
 
