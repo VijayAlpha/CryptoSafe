@@ -47,28 +47,28 @@ Safe created using (zkSync Era): https://zksync2-testnet.zkscan.io/address/0x5c7
 ### Screenshots
 
 #### Home
-<img src="./img/1.png" width=400 />
+<img src="./img/1.png" width=800 />
 
 #### Assets that user owns
-<img src="./img/2.png" width=400 />
+<img src="./img/2.png" width=800 />
 
 #### User Depositing DAI in Safe
-<img src="./img/6.png" width=400 />
+<img src="./img/6.png" width=800 />
 
 #### User's Safe Balance
-<img src="./img/3.png" width=400 />
+<img src="./img/3.png" width=800 />
 
 #### Withdraw funds from safe
-<img src="./img/7.png" width=400 />
+<img src="./img/7.png" width=800 />
 
 #### Setting up Guardian Address
-<img src="./img/4.png" width=400 />
+<img src="./img/4.png" width=800 />
 
 #### Recover Safe from Guardian Account by entering Previous Address
-<img src="./img/8.png" width=400 />
+<img src="./img/8.png" width=800 />
 
 #### Recovered Safe in the Guardian Account
-<img src="./img/5.png" width=400 />
+<img src="./img/5.png" width=800 />
 
 ####
 
