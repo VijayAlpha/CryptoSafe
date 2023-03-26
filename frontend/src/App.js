@@ -7,11 +7,12 @@ export default function App() {
   const [ethAddress, setEthAddress] = useState("");
   const [cryptoSafeContract, setCryptoSafeContract] = useState("");
   const [userSigner, setUserSigner] = useState("");
+  const [domainData, setDomainData] = useState('');
   return (
     <HashRouter>
       <Routes>
-        <Route exact path='/' element={<Home setEthAddress={setEthAddress} setCryptoSafeContract={setCryptoSafeContract} setUserSigner={setUserSigner} />} />
-        <Route exact path='/dashboard' element={<UserDashboard ethAddress={ethAddress} cryptoSafeContract={cryptoSafeContract} userSigner={userSigner} />} />
+        <Route exact path='/' element={<Home setEthAddress={setEthAddress} setCryptoSafeContract={setCryptoSafeContract} setUserSigner={setUserSigner} setDomainData={setDomainData} />} />
+        <Route exact path='/dashboard' element={<UserDashboard ethAddress={ethAddress} cryptoSafeContract={cryptoSafeContract} userSigner={userSigner} domainData={domainData} />} />
       </Routes>
     </HashRouter>
   )

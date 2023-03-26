@@ -1,6 +1,8 @@
 import React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
+import { Button } from "@mui/material";
 import { AppBar, Toolbar, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
@@ -14,6 +16,14 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import InventoryIcon from '@mui/icons-material/Inventory';
+import logo from "./top-logo.png";
+import UAuth from '@uauth/js';
+
+const uauth = new UAuth({
+    clientID: "b17d069a-150a-4c64-b2e1-5babb87c5bd7",
+    redirectUri: "http://localhost:3000",
+});
+
 
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -45,13 +55,20 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 const drawerWidth = 240;
-export default function Sidebar({ setCurrentSection, currentSection, safeAddress, ethAddress }) {
+export default function Sidebar({ setCurrentSection, currentSection, safeAddress, ethAddress, domainData }) {
+    const navigate = useNavigate();
     const theme = useTheme();
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
         setOpen(true);
     };
+    const disconnect = async () => {
+        if (domainData) {
+            await uauth.logout();
+        }
 
+        navigate('/');
+    }
     const handleDrawerClose = () => {
         setOpen(false);
     };
@@ -64,13 +81,18 @@ export default function Sidebar({ setCurrentSection, currentSection, safeAddress
                         aria-label="open drawer"
                         onClick={handleDrawerOpen}
                         edge="start"
-                        sx={{ mr: 2, ...(open && { display: 'none' }) }}
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        CryptoSafe Recovery Management
+                    <Typography variant="h6" component="div" >
+                        CryptoSafe
                     </Typography>
+                    <div style={{ display: 'flex', alignItems: "center" }}>
+                        <p style={{ marginRight: '10px', marginLeft: "800px" }}>{domainData?.sub}</p>
+                        <Button variant="contained" color="secondary" onClick={disconnect}>
+                            Disconnect
+                        </Button>
+                    </div>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -86,7 +108,9 @@ export default function Sidebar({ setCurrentSection, currentSection, safeAddress
                 anchor="left"
                 open={open}
             >
+
                 <DrawerHeader>
+                    <img src={logo} onClick={() => navigate("/")} style={{ height: "80px", width: "300px", cursor: "pointer", marginLeft: "20px" }} />
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
