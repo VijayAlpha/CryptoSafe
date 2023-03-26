@@ -1,24 +1,28 @@
 import React, { useEffect } from 'react';
 import { Container, Button } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
-//import CryptoSafeFactory from "../abis/CryptoSafeFactory.json"
-import CryptoSafeFactory from "../abis/CryptoSafeFactoryzkEVM.json"
+import CryptoSafeFactory from "../abis/CryptoSafeFactory.json"
+//import CryptoSafeFactory from "../abis/CryptoSafeFactoryzkEVM.json"
 import { Web3Provider, Contract } from 'zksync-web3';
 import AppBar from '@mui/material/AppBar';
 import CssBaseline from '@mui/material/CssBaseline';
+import CardActions from '@mui/material/CardActions';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
+import CardHeader from '@mui/material/CardHeader';
+import Card from '@mui/material/Card';
+import StarIcon from '@mui/icons-material/StarBorder';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import logo from "./top-logo.png";
+import GlobalStyles from '@mui/material/GlobalStyles';
 import UAuth from '@uauth/js';
+import CardContent from '@mui/material/CardContent';
 
 const CRYPTOSAFEFACTORY_CONTRACT_ADDRESS = "0x845835274d85d210e3377f41A4305945aD8de61F"; //zksync
 //const CRYPTOSAFEFACTORY_CONTRACT_ADDRESS = "0xDbdf4B0674b98A94010152F804D663a0D4213529"; //zkEVM
 const CRYPTOSAFEFACTORY_ABI = CryptoSafeFactory.abi;
-const theme = createTheme();
 
 const uauth = new UAuth({
     clientID: "b17d069a-150a-4c64-b2e1-5babb87c5bd7",
@@ -79,57 +83,126 @@ export default function Home({ setEthAddress, setCryptoSafeContract, setUserSign
     }
 
 
+    const tiers = [
+        {
+            title: 'Create Safe',
+            description: [
+                'On chain recoverable safe on Polygon zkEVM & zkSync Testnets',
+            ],
+        },
+        {
+            title: 'Store Cryptos on Safe',
+            description: [
+                'Connect your wallet and add or withdraw your crypto assets on Cryptosafe platform',
+            ],
+        },
+        {
+            title: 'Recover Safe',
+            description: [
+                'Recover your safe if you lost your access to safe by setting up the backup guardian'
+            ],
+        },
+    ];
+
+
     return (
-        <ThemeProvider theme={theme}>
+        <>
+            <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
             <CssBaseline />
-            <AppBar position="relative">
-                <Toolbar>
+            <AppBar
+                position="static"
+                color="default"
+                elevation={0}
+                sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
+            >
+                <Toolbar sx={{ flexWrap: 'wrap' }}>
                     <img src={logo} onClick={() => navigate("/")} style={{ height: "50px", cursor: "pointer" }} />
-                    <Typography variant="h6" color="inherit" noWrap>
+                    <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
                         CryptoSafe
                     </Typography>
+                    <Button sx={{ my: 1, mx: 1.5 }} variant="contained" onClick={loginWithUnstoppableDomains}>Connect With Unstoppable Domain</Button>
+                    <Button sx={{ my: 1, mx: 1.5 }} variant="contained" onClick={connectWithMetamask} > Connect With Metamask </Button>
                 </Toolbar>
             </AppBar>
-            <main>
-                {/* Hero unit */}
-                <Box
-                    sx={{
-                        bgcolor: 'background.paper',
-                        pt: 8,
-                        pb: 6,
-                    }}
+            {/* Hero unit */}
+            <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
+                <Typography
+                    component="h3"
+                    variant="h3"
+                    align="center"
+                    color="text.primary"
+                    gutterBottom
                 >
-                    <Container maxWidth="sm">
-                        <Typography
-                            component="h1"
-                            variant="h2"
-                            align="center"
-                            color="text.primary"
-                            gutterBottom
+                    CryptoSafe
+                </Typography>
+                <Typography variant="h5" align="center" color="text.secondary" component="p">
+                    CryptoSafe is a decentralized custody protocol and collective asset management platform on
+                    Polygon zkEVM & zkSync
+                </Typography>
+            </Container>
+            {/* End hero unit */}
+            <Container maxWidth="md" component="main">
+                <Grid container spacing={5} alignItems="flex-end">
+                    {tiers.map((tier) => (
+                        // Enterprise card is full width at sm breakpoint
+                        <Grid
+                            item
+                            key={tier.title}
+                            xs={12}
+                            sm={tier.title === 'Enterprise' ? 12 : 6}
+                            md={4}
                         >
-                            CryptoSafe
-                        </Typography>
-                        <Typography variant="h6" align="center" color="text.secondary" paragraph>
-                            CryptoSafe is a decentralized custody protocol and collective asset management platform on Polygon zkEVM & zkSync
-                        </Typography>
-                        <Stack
-                            sx={{ pt: 4 }}
-                            direction="row"
-                            spacing={2}
-                            justifyContent="center"
-                        >
-                            <Button variant="contained" onClick={loginWithUnstoppableDomains}>Connect With Unstoppable Domain</Button>
-                            <Button variant="contained" onClick={connectWithMetamask} > Connect With Metamask </Button>
-                        </Stack>
-                    </Container>
-                </Box>
-                <Container sx={{ py: 8 }} maxWidth="md">
-                    {/* End hero unit */}
-                    <Grid container spacing={4}>
+                            <Card>
+                                <CardHeader
+                                    title={tier.title}
+                                    subheader={tier.subheader}
+                                    titleTypographyProps={{ align: 'center' }}
+                                    action={tier.title === 'Pro' ? <StarIcon /> : null}
+                                    subheaderTypographyProps={{
+                                        align: 'center',
+                                    }}
+                                    sx={{
+                                        backgroundColor: (theme) =>
+                                            theme.palette.mode === 'light'
+                                                ? theme.palette.grey[200]
+                                                : theme.palette.grey[700],
+                                    }}
+                                />
+                                <CardContent>
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'baseline',
+                                            mb: 2,
+                                        }}
+                                    >
 
-                    </Grid>
-                </Container>
-            </main>
-        </ThemeProvider>
+                                    </Box>
+                                    <ul>
+                                        {tier.description.map((line) => (
+                                            <Typography
+                                                component="li"
+                                                variant="subtitle1"
+                                                align="center"
+                                                key={line}
+                                            >
+                                                {line}
+                                            </Typography>
+                                        ))}
+                                    </ul>
+                                </CardContent>
+                                <CardActions>
+                                    <Button fullWidth variant={tier.buttonVariant}>
+                                        {tier.buttonText}
+                                    </Button>
+                                </CardActions>
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Container>
+            {/* Footer */}
+        </>
     )
 }

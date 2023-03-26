@@ -32,7 +32,7 @@ export default function BackUp({ cryptoSafeContract }) {
     }
     return (
         <div>
-            <h2>Set Your Backup Address</h2>
+            <h2>Setup your Guardian Address</h2>
             <p>
                 {backupAddress} <Button variant="contained" onClick={() => setShowSetBackupAddress(!showSetBackupAddress)}>{showSetBackupAddress ? 'Cancel' : 'Edit'}</Button
                 ></p>
