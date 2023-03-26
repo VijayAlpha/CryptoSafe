@@ -47,42 +47,27 @@ Safe created using (zkSync Era): https://zksync2-testnet.zkscan.io/address/0x5c7
 ### Screenshots
 
 #### Home
-
-This is the Dashboard of CryptoSafe
 <img src="./img/1.png" width=400 />
 
 #### Assets that user owns
-
-This are the different crypto assets that user has in his wallet and which he can deposit in a safe
 <img src="./img/2.png" width=400 />
 
 #### User Depositing DAI in Safe
-
-User can deposit any asset into the safe by paying fees from any of the asset he owns
 <img src="./img/6.png" width=400 />
 
 #### User's Safe Balance
-
-This is user's safe balance in his safe, he has deposited 5 DAI
 <img src="./img/3.png" width=400 />
 
 #### Withdraw funds from safe
-
-User can withdraw his funds from the safe by paying fees from any of the asset he has in the safe
 <img src="./img/7.png" width=400 />
 
 #### Setting up Guardian Address
-
-User can setup guardian address through which he can recover his safe back in future
 <img src="./img/4.png" width=400 />
 
 #### Recover Safe from Guardian Account by entering Previous Address
-
-User can get his access back to the original safe by entering his previous address
 <img src="./img/8.png" width=400 />
 
 #### Recovered Safe in the Guardian Account
-
 <img src="./img/5.png" width=400 />
 
 ####
