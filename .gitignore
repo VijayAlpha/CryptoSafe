@@ -6,10 +6,10 @@ typechain
 typechain-types
 
 # Hardhat files
-cache-zk
-artifacts-zk
 artifacts
 cache
+artifacts-zk
+cache-zk
 
 package-lock.json
 
