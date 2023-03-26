@@ -1,15 +1,59 @@
-import React from 'react';
-import { Card, CardContent, Container, Button } from "@mui/material";
+import React, { useEffect } from 'react';
+import { Container, Button } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
-
 import CryptoSafeFactory from "../abis/CryptoSafeFactory.json"
 import { Web3Provider, Contract } from 'zksync-web3';
+import AppBar from '@mui/material/AppBar';
+import CssBaseline from '@mui/material/CssBaseline';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import logo from "./top-logo.png";
+import UAuth from '@uauth/js';
 
 const CRYPTOSAFEFACTORY_CONTRACT_ADDRESS = "0x845835274d85d210e3377f41A4305945aD8de61F";
 const CRYPTOSAFEFACTORY_ABI = CryptoSafeFactory.abi;
+const theme = createTheme();
 
-export default function Home({ setEthAddress, setCryptoSafeContract, setUserSigner }) {
+const uauth = new UAuth({
+    clientID: "b17d069a-150a-4c64-b2e1-5babb87c5bd7",
+    redirectUri: "http://localhost:3000",
+});
+export default function Home({ setEthAddress, setCryptoSafeContract, setUserSigner, setDomainData }) {
+    useEffect(() => {
+        uauth
+            .user()
+            .then(userData => {
+                console.log(userData);
+                setDomainData(userData);
+                setEthAddress(userData.wallet_address);
+                navigate('./dashboard');
+            })
+            .catch(error => {
+                console.error('profile error:', error);
+            })
+    }, [])
+
+
     const navigate = useNavigate();
+
+    const loginWithUnstoppableDomains = async () => {
+        try {
+            const authorization = await uauth.loginWithPopup();
+            authorization.sub = authorization.idToken.sub;
+            console.log(authorization);
+
+            setDomainData(authorization);
+            setEthAddress(authorization.idToken.wallet_address);
+            navigate('./dashboard');
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
 
     const connectWithMetamask = async () => {
         window.ethereum.request({ method: "eth_requestAccounts" }).then(async accounts => {
@@ -34,23 +78,56 @@ export default function Home({ setEthAddress, setCryptoSafeContract, setUserSign
 
 
     return (
-        <Container>
-            <Card>
-                <CardContent>
-                    <h1 style={{ marginBottom: '.3rem' }}>CryptoSafe</h1>
-                    <p style={{ marginBottom: '.5rem' }}>Store your Crypto on Recoverable Safe (zksync testnet)</p>
-                    <hr />
-                    <br />
-                    <Button variant="contained" fullWidth>
-                        Connect With Unstoppable Domain
-                    </Button>
-                    <br />
-                    <br />
-                    <Button variant="contained" onClick={connectWithMetamask} fullWidth>
-                        Connect With Metamask
-                    </Button>
-                </CardContent>
-            </Card>
-        </Container>
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <AppBar position="relative">
+                <Toolbar>
+                    <img src={logo} onClick={() => navigate("/")} style={{ height: "50px", cursor: "pointer" }} />
+                    <Typography variant="h6" color="inherit" noWrap>
+                        CryptoSafe
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <main>
+                {/* Hero unit */}
+                <Box
+                    sx={{
+                        bgcolor: 'background.paper',
+                        pt: 8,
+                        pb: 6,
+                    }}
+                >
+                    <Container maxWidth="sm">
+                        <Typography
+                            component="h1"
+                            variant="h2"
+                            align="center"
+                            color="text.primary"
+                            gutterBottom
+                        >
+                            CryptoSafe
+                        </Typography>
+                        <Typography variant="h5" align="center" color="text.secondary" paragraph>
+                            CryptoSafe is a decentralized custody protocol and collective asset management platform on zkSync
+                        </Typography>
+                        <Stack
+                            sx={{ pt: 4 }}
+                            direction="row"
+                            spacing={2}
+                            justifyContent="center"
+                        >
+                            <Button variant="contained" onClick={loginWithUnstoppableDomains}>Connect With Unstoppable Domain</Button>
+                            <Button variant="contained" onClick={connectWithMetamask} > Connect With Metamask </Button>
+                        </Stack>
+                    </Container>
+                </Box>
+                <Container sx={{ py: 8 }} maxWidth="md">
+                    {/* End hero unit */}
+                    <Grid container spacing={4}>
+
+                    </Grid>
+                </Container>
+            </main>
+        </ThemeProvider>
     )
 }
