@@ -8,6 +8,8 @@ typechain-types
 # Hardhat files
 cache-zk
 artifacts-zk
+artifacts
+cache
 
 package-lock.json
 
