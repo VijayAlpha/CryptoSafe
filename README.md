@@ -4,7 +4,7 @@
 </p>
 <br/>
 
-## CryptoSafe : Store your cryptos on a recoverable safe
+## CryptoSafe : Store your Cryptos on a Recoverable Safe Contract
 
 CryptoSafe is a recoverable safe that stores your crypto assets on recoverable smart contract so that you don't have the fear of loosing them. You can also recover your safe if you lost the access to the safe by setting up backup address.
 
