@@ -88,7 +88,7 @@ export default function Sidebar({ setCurrentSection, currentSection, safeAddress
                         CryptoSafe
                     </Typography>
                     <div style={{ display: 'flex', alignItems: "center" }}>
-                        <p style={{ marginRight: '10px', marginLeft: "800px" }}>{domainData?.sub}</p>
+                        <p style={{ marginRight: '10px', marginLeft: "950px" }}>{domainData?.sub}</p>
                         <Button variant="contained" color="secondary" onClick={disconnect}>
                             Disconnect
                         </Button>
@@ -136,6 +136,9 @@ export default function Sidebar({ setCurrentSection, currentSection, safeAddress
                             <a href={`https://zksync2-testnet.zkscan.io/address/${ethAddress}`} target="_blank" rel="noopener noreferrer">
                                 {ethAddress && ethAddress.substring(0, 6) + "..." + ethAddress.substring(36, 42)}
                             </a>
+                            {/* <a href={`https://explorer.public.zkevm-test.net/address/${ethAddress}`} target="_blank" rel="noopener noreferrer">
+                                {ethAddress && ethAddress.substring(0, 6) + "..." + ethAddress.substring(36, 42)}
+                            </a> */}
                         </ListItem>
 
                     </div>
@@ -145,6 +148,9 @@ export default function Sidebar({ setCurrentSection, currentSection, safeAddress
                             <a href={`https://zksync2-testnet.zkscan.io/address/${safeAddress}`} target="_blank" rel="noopener noreferrer">
                                 {safeAddress && safeAddress.substring(0, 6) + "..." + safeAddress.substring(36, 42)}
                             </a>
+                            {/* <a href={`https://explorer.public.zkevm-test.net/address/${safeAddress}`} target="_blank" rel="noopener noreferrer">
+                                {safeAddress && safeAddress.substring(0, 6) + "..." + safeAddress.substring(36, 42)}
+                            </a> */}
                         </ListItem>
                     </div>
                 </List>

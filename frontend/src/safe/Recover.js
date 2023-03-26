@@ -8,7 +8,8 @@ export default function Recover({ cryptoSafeContract }) {
         const txHandle = await cryptoSafeContract.changeSafeOwner(oldAddress, {
             customData: {
                 // Passing the token to pay fee with
-                feeToken: "0x3e7676937A7E96CFB7616f255b9AD9FF47363D4b",
+                feeToken: "0x3e7676937A7E96CFB7616f255b9AD9FF47363D4b", //DAI
+                // feeToken: "0x3ce1bab7b7bAE26775F81Ee3576a99f0EAd5B33C" //wETH
             },
         });
 

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { Container, Button } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
-import CryptoSafeFactory from "../abis/CryptoSafeFactory.json"
+//import CryptoSafeFactory from "../abis/CryptoSafeFactory.json"
+import CryptoSafeFactory from "../abis/CryptoSafeFactoryzkEVM.json"
 import { Web3Provider, Contract } from 'zksync-web3';
 import AppBar from '@mui/material/AppBar';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,7 +15,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import logo from "./top-logo.png";
 import UAuth from '@uauth/js';
 
-const CRYPTOSAFEFACTORY_CONTRACT_ADDRESS = "0x845835274d85d210e3377f41A4305945aD8de61F";
+const CRYPTOSAFEFACTORY_CONTRACT_ADDRESS = "0x845835274d85d210e3377f41A4305945aD8de61F"; //zksync
+//const CRYPTOSAFEFACTORY_CONTRACT_ADDRESS = "0xDbdf4B0674b98A94010152F804D663a0D4213529"; //zkEVM
 const CRYPTOSAFEFACTORY_ABI = CryptoSafeFactory.abi;
 const theme = createTheme();
 
@@ -107,8 +109,8 @@ export default function Home({ setEthAddress, setCryptoSafeContract, setUserSign
                         >
                             CryptoSafe
                         </Typography>
-                        <Typography variant="h5" align="center" color="text.secondary" paragraph>
-                            CryptoSafe is a decentralized custody protocol and collective asset management platform on zkSync
+                        <Typography variant="h6" align="center" color="text.secondary" paragraph>
+                            CryptoSafe is a decentralized custody protocol and collective asset management platform on Polygon zkEVM & zkSync
                         </Typography>
                         <Stack
                             sx={{ pt: 4 }}

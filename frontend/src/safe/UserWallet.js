@@ -6,6 +6,7 @@ import WalletTable from "../common/WalletTable"
 import { TOKEN_ADDRESS } from '../utils/TokenAddresses';
 
 const provider = new Provider("https://zksync2-testnet.zksync.dev");
+// const provider = new ethers.JsonRpcProvider("https://rpc.public.zkevm-test.net")
 
 export default function UserWallet({ ethAddress, userSigner, setUserAssets, userAssets, safeAddress }) {
     const [selectedToken, setSelectedToken] = useState("");
@@ -24,6 +25,7 @@ export default function UserWallet({ ethAddress, userSigner, setUserAssets, user
         try {
             const assets = [];
             for (let i = 0; i < TOKEN_ADDRESS.length; i++) {
+                console.log(TOKEN_ADDRESS[i].address)
                 const balanceInUnits = await provider.getBalance(ethAddress, "latest", TOKEN_ADDRESS[i].address);
                 console.log(balanceInUnits)
                 const balance = ethers.formatUnits(balanceInUnits.toBigInt(), TOKEN_ADDRESS[i].decimal);
