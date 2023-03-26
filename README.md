@@ -50,7 +50,7 @@ CryptoSafe is currently available on Layer-2 Polygon zkEVM & zkSync Era Testnet.
 
 Connect to the appropriate network via metamask and visit the following links.
 
-CryptoSafe Contract(Polygon zkEVM): https://explorer.public.zkevm-test.net/address/0xDbdf4B0674b98A94010152F804D663a0D4213529
+CryptoSafe Contract(Polygon zkEVM): https://explorer.public.zkevm-test.net/address/0x99E0dB72A90c00EfdD834C8cb93409bc0eBE1817
 
 CryptoSafe Contract(zkSync Era): https://zksync2-testnet.zkscan.io/address/0x845835274d85d210e3377f41A4305945aD8de61F/transactions
 
