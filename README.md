@@ -10,9 +10,7 @@ CryptoSafe is a recoverable safe that stores your crypto assets on recoverable s
 
 Built as a prototype for the Scaling Ethereum 2023 hackathon.
 
-Live :
-
-Video :
+Video : https://youtu.be/p7N4xHlvdO0
 
 ### Motivation
 
