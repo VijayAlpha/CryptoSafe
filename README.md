@@ -6,7 +6,7 @@
 
 ## CryptoSafe : Store your Cryptos on a Recoverable Safe Contract
 
-CryptoSafe is a recoverable safe that stores your crypto assets on recoverable smart contract so that you don't have the fear of loosing them. You can also recover your safe if you lost the access to the safe by setting up backup address.
+CryptoSafe is a recoverable safe that stores your crypto assets on recoverable smart contract so that you don't have the fear of loosing them. You can also recover your safe if you lost the access to the safe by setting up guardian address.
 
 Built as a prototype for the Scaling Ethereum 2023 hackathon.
 
@@ -81,6 +81,8 @@ Safe created using (zkSync Era): https://zksync2-testnet.zkscan.io/address/0x5c7
 3. Load testing: As the user base grows, the platform will need to be able to handle an increasing volume of traffic and data. Future work could involve improving the platform's scalability and performance to ensure that it can handle a large number of users and transactions without slowing down or becoming unreliable.
 
 4. Add mainnet network selection and (potentially separate) deployments for each.
+
+5. Add Polygon ID On Chain Verification support for Verification of users and Guardians when recovering the safe.
 
 #### Revenue opportunities
 
